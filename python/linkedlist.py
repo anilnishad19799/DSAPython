@@ -23,6 +23,7 @@ class Node:
 
 class LinkedList:
 
+    ## Insertion Operation
     def __init__(self, node = None):
         self.length = 0
         self.head = node
@@ -82,6 +83,36 @@ class LinkedList:
             newNode.next = current.next
             current.next = newNode
 
+        ### Delete Operation 
+    
+    def deleteAtFirst(self):
+        if self.head==None:
+            print("No element to delete")
+        self.head = self.head.next
+
+    def deleteAtLast(self):
+        if self.head == None:
+            print("No element is present")
+        curr = self.head
+        prevnode = self.head
+        while curr.next!=None:
+            prevnode = curr.next
+            curr = curr.next
+        prevnode.next = None
+
+    def deleteAtGivenPosition(self, pos):
+        if self.head == None:
+            print("Empty List")
+        totallength = self.getLengthLinkedList()
+        if totallength==1:
+            self.head = None
+        curr = self.head
+        prevnode = self.head
+        count = 0
+        while count<pos-1 or curr.next!=None:
+            prevnode = curr
+            curr =  curr.next
+        prevnode.next = curr.next      
 
 
 # newNode = Node()
