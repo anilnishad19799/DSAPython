@@ -14,17 +14,27 @@ def firstApproachcountNumberOfPairsHavingDifferenceK(arrlist):
     return pairlist
 
 
-## wrong approach
-def secondApproachcountNumberOfPairsHavingDifferenceK(arrlist):
-    sortedarrlist = sorted(arrlist)
-    print("sortedarrlist",sortedarrlist)
-    pairlist = []
-    for i in range(len(sortedarrlist)-1):
-        if abs(sortedarrlist[i] - sortedarrlist[i+1])==2:
-            pairlist.append([sortedarrlist[i], sortedarrlist[i+1]])
+## approach having time complexity nlogn
+def binarySearch(start, end, i, k, arr):
+    mid = (start + end) // 2
 
-    return pairlist
+    if i+k == arr[mid]:
+        return [i,arr[mid]]
+    
+    if arr[mid] < i+k:
+        binarySearch(0, mid, i, k, arr)
+    else:
+        binarySearch(mid, len(arr), i, k, arr)
+
+    return -1
+
+def secondApproachcountNumberOfPairsHavingDifferenceK(arrlist, k):
+    sortedarrlist = sorted(arrlist)
+    for i in range(arrlist[i]):
+        binarySearch(0, len(arrlist), arrlist[i], k, arrlist)
+    
 
 arrlist = [1,7,5,9,2,12,3]
-getpair = secondApproachcountNumberOfPairsHavingDifferenceK(arrlist)
+k=2
+getpair = secondApproachcountNumberOfPairsHavingDifferenceK(arrlist, k)
 print(getpair)
