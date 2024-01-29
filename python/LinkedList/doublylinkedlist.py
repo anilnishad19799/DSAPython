@@ -106,7 +106,41 @@ class DoublyLinkedList:
         
 
     def deleteAtGivenIndex(self, index):
-        pass
+        if self.head == None:
+            return "No element to delete already list is empty"
+        
+        len = self.getLengthLinkedList()
 
+        if index > len:
+            return "Index is out of bound"
+        
+        count = 1
+        curr = self.head
+        prev = self.head
+        while count < index - 1:
+            prev = curr
+            curr = curr.head
+
+        prev.next = curr.next
+        curr.next = None
+        
     def deleteWithGivenData(self, data):
-        pass
+        
+        if self.head == None:
+            return "No element to delete already list is empty"
+        
+        curr = self.head
+        prev = self.head
+
+        len = self.getLengthLinkedList()
+
+        while curr.next != None:
+            if curr.data == data:
+                prev.next = curr.next
+                curr.next = None
+                return "Node value Deleted" 
+
+            prev = curr
+            curr = curr.next
+
+        return "Node value not there in linkedlist" 
