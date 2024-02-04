@@ -60,4 +60,35 @@ def checkValidExpression(express):
             stack.push(symbol)
     return True
 
-print(checkValidExpression("[]()"))
+# print(checkValidExpression(")[]("))
+
+stack = DynamicArrayStack()
+def checkValidExpressionSecondApproach(express):
+
+    openingsymbol = ["(","{","["]
+    closingsymbol = ["}","]",")"]
+    validcount = 0
+
+    for symbol in express:
+        print("symbol", symbol)
+        if symbol in openingsymbol:
+            stack.push(symbol)
+            validcount+=1
+
+        if symbol in closingsymbol:
+            stack.pop()
+            validcount-=1
+        
+        if validcount<0:
+            return "Expression is not valid"
+
+
+    if validcount==0:
+        return "Expression is valid"
+    else:
+        return "Expression is not valid"
+
+print(checkValidExpressionSecondApproach(")[]("))
+
+
+        
