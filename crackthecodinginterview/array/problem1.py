@@ -44,7 +44,7 @@ else:
 '''
 
 """Third approach using hash table time complexity (n)"""
-
+"""
 def get_hash(key):
     return ord(key)
 
@@ -68,3 +68,4 @@ if output:
     print("all character is unique")
 else:
     print("duplicate character in string", character)
+"""
