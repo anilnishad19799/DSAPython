@@ -17,6 +17,8 @@ class BinaryTreeNode:
     def getRight(self):
         return self.right
     
+
+""" Recursive way"""
 class BinaryTree:
     def __init__(self, root):
         self.root = root
@@ -45,3 +47,24 @@ class BinaryTree:
         self.postOrder(root.left)
         self.postOrder(root.right)
         print("Data is ", root.data)
+
+""" Iterative way"""
+class BinaryTree:
+    def __init__(self, root):
+        self.root = root
+
+    def preOrder(self):
+        if not self.root:
+            return
+        
+        stack = []
+        result = []
+        stack.append(self.root)
+
+        while stack:
+            node = stack.pop()
+            result.append(node.data)
+            
+            if node.right: stack.append(node.right)
+            if node.left: stack.append(node.left)
+
