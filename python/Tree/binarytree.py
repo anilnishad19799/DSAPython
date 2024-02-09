@@ -48,7 +48,7 @@ class BinaryTree:
         self.postOrder(root.right)
         print("Data is ", root.data)
 
-""" Iterative way"""
+""" Iterative way for inorder preorder postorder"""
 class BinaryTree:
     def __init__(self, root):
         self.root = root
@@ -67,4 +67,45 @@ class BinaryTree:
             
             if node.right: stack.append(node.right)
             if node.left: stack.append(node.left)
+
+
+    def Inorder(self, root):
+
+        if not root:
+            return
+        
+        node = root
+        stack =[]
+        result = []
+        while stack or node:
+            if node.left:
+                stack.append(node)
+                node = node.left
+            else:
+                node = stack.pop()
+                result.append(node.data)
+                node = node.right
+
+    def postOrder(self, root):
+        if not root:
+            return
+        
+        result = []
+        stack = []
+
+        node, previous = root, None
+        while stack or node:
+            if node.left:
+                stack.append(node.left)
+
+            else:
+                node = stack[-1]
+                if node.right:
+                    stack.append(node.right)
+                else:
+                    previous = stack.pop()
+                    result.append(node.data)
+                    node = None
+
+                
 
