@@ -50,8 +50,26 @@ class findELementRecursive:
                 currentnode  =  currentnode.right
 
         return None
-            
+    
 
+""" find minimum value from BST"""
+# class MinMaxValueFromBST:
+def minValue(self, root):
+    ## base case define here
+    currentNode = root
+    if currentNode.left is None:
+        return currentNode
+    else:
+        return minValue(currentNode.left)
+                
+            
+def maxValue(self, root):
+    currentNode = root
+
+    if currentNode.right is None:
+        return currentNode
+    else:
+        maxValue(currentNode.right)
 
 
 
