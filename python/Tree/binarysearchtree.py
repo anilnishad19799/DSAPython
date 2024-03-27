@@ -72,6 +72,22 @@ def maxValue(self, root):
         maxValue(currentNode.right)
 
 
+def insert(root, node):
+    if root == None:
+        root = node
+    else:
+        if root.data > node.data:
+            if root.left==None:
+                root.left = node
+            else:
+                insert(root.left, node)
+        else:
+            if root.data < node.data:
+                if root.right == None:
+                    root.right = node
+            else:
+                insert(root.right, node)
+                
 
 
 
