@@ -20,6 +20,7 @@ class AVLTree:
 
     def insert(self, data):
         newNode = AVLNode(data)
+        print("data come to insert ", data)
         self.root, taller = self.recInsertAVL(self.root, newNode)
 
     def recInsertAVL(self, root, newNode):
@@ -40,7 +41,6 @@ class AVLTree:
                 if root.balanceFactor == 0:
                     print("2.2 root.balanceFactor 0 ")
                     root.balanceFactor = -1
-                    taller = False
                 elif root.balanceFactor == 1:
                     print("2.3 root.balanceFactor 1 ")
                     root.balanceFactor = 0
@@ -52,7 +52,7 @@ class AVLTree:
         else:
             print("3. newnodedata", newNode.data , " > root.data", root.data)
             root.right, taller = self.recInsertAVL(root.right, newNode)
-            print("root value", root.data, "root.left value", root.left.data)
+            print("root value", root.data, "root.right value", root.right.data)
 
             if taller:
                 print("3.1 Taller true ")
@@ -63,7 +63,6 @@ class AVLTree:
                 elif root.balanceFactor == 0:
                     print("3.3 root.balanceFactor 0")
                     root.balanceFactor = 1
-                    taller = False
                 else:
                     print("3.3 Esle root.balanceFactor leftRightRotate call")
                     root = self.leftRightRotate(root)
@@ -154,7 +153,7 @@ class AVLTree:
 
 def tester():
     avl = AVLTree()
-    data = [3,1]
+    data = [3,2,1]
     for i in range(len(data)):
         avl.insert(data[i])
 
