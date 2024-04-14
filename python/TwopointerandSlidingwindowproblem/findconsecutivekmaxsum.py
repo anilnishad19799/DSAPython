@@ -24,3 +24,31 @@ def findmaxKconsecutive(arr, k):
 arr = [2,4,9,8,6,10,12]
 maxsumval = findmaxKconsecutive(arr, k)
 print(maxsumval)
+
+""" Using two pointer and sliding windows approach"""
+def findmaxsumconsecutivetwopointer(arr, k):
+    sum = 0
+    maxsum = 0
+
+    l = 0
+    r = k-1
+
+    for i in range(0, k):
+        sum = sum + arr[i]
+
+    n = len(arr) - 1
+    
+    while( r<n):
+        sum = sum - arr[l]
+        l+=1
+        r+=1
+        sum = sum + arr[r]
+
+        if sum > maxsum:
+            maxsum = sum
+
+    return maxsum
+
+arr = [2,4,9,8,6,10,12]
+maxsumval = findmaxsumconsecutivetwopointer(arr, k)
+print(maxsumval)
