@@ -26,6 +26,6 @@ print(maxlen)
 
 
 
-""" Better approach """
+""" Better approach using hashing technique"""
 
 
