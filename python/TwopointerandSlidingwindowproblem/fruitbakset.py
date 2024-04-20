@@ -28,4 +28,46 @@ print(maxlen)
 
 """ Better approach using hashing technique"""
 
+from collections import defaultdict
+
+k = 2
+l,r,maxlen,n =0,0,0,len(arr)-1
+hash = defaultdict(int)
+
+while (r < n):
+    hash[arr[r]] +=1
+
+    if len(hash) > k:
+        while len(hash) > k:
+            hash[arr[l]] -=1
+            if hash[arr[l]] == 0:
+                del hash[arr[l]]
+            l+=1
+
+    if len(hash) <= l:
+        maxlen = max(maxlen, r-l+1)
+    r+=1
+print(maxlen)
+
+
+""" Optimal approach is replace while condition to if"""
+k = 2
+l,r,maxlen,n =0,0,0,len(arr)-1
+hash = defaultdict(int)
+
+while (r < n):
+    hash[arr[r]] +=1
+
+    if len(hash) > k:
+        if len(hash) > k:
+            hash[arr[l]] -=1
+            if hash[arr[l]] == 0:
+                del hash[arr[l]]
+            l+=1
+
+    if len(hash) <= l:
+        maxlen = max(maxlen, r-l+1)
+    r+=1
+print(maxlen)
+
 
