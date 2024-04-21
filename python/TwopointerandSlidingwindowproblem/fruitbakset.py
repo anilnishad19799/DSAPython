@@ -44,7 +44,7 @@ while (r < n):
                 del hash[arr[l]]
             l+=1
 
-    if len(hash) <= l:
+    if len(hash) <= k:
         maxlen = max(maxlen, r-l+1)
     r+=1
 print(maxlen)
@@ -65,7 +65,7 @@ while (r < n):
                 del hash[arr[l]]
             l+=1
 
-    if len(hash) <= l:
+    if len(hash) <= k:
         maxlen = max(maxlen, r-l+1)
     r+=1
 print(maxlen)
