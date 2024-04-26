@@ -5,20 +5,28 @@
 """
 
 
-""" Brute Force Approach """
+
+""" Optimal solution """
+
+def binaryarraywithsum(arr, k):
+    l,r,count = 0,0,0
+    sum = 0
+    n = len(arr)
+
+    while r < n:
+        sum = sum + arr[r]
+
+        while sum > k:
+            sum = sum - arr[l]
+            l = l+1
+        
+        count += (r-l+1)
+        r+=1
+
+    return count
 
 arr = [1,0,1,0,1]
-n = len(arr)
-count = 0
 k = 2
-for i in range(n):
-    for j in range(i, n):
-        
-        if arr[i] + arr[j] == k:
-            count+=1
-        
-        if arr[i] + arr[j] > k:
-            break
+totalcount = binaryarraywithsum(arr, k) - binaryarraywithsum(arr, k-1)
+print(totalcount)
 
-print(count)
-        
