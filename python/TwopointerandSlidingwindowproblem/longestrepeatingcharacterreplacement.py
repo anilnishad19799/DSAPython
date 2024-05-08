@@ -3,8 +3,10 @@
     find longest substring with replacing k character and get repeating element having maxlength
 
 """
-s = "AAABABBA"
-k = 2
+# s = "AAABABBA"
+# k = 2
+s = "AABABBA"
+k = 1
 maxlen = 0
 n = len(s) - 1
 for i in range(n):
@@ -67,11 +69,11 @@ l,r,maxlen,maxf = 0,0,0,0
 hash = {i:0 for i in range(26)}
 n = len(s)
 while r < n:
-    hash[ord(s[j]) - ord("A")] +=1
-    maxf = max(maxf, hash[ord(s[j])- ord('A')])
+    hash[ord(s[r]) - ord("A")] +=1
+    maxf = max(maxf, hash[ord(s[r])- ord('A')])
 
     if (r-l+1) - maxf > k:
-        hash[ord(s[j])-ord('A')] -=1
+        hash[ord(s[r])-ord('A')] -=1
         maxf = 0
         l+=1
 
