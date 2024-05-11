@@ -1,19 +1,33 @@
-class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:
-        l,r,maxlen,maxf = 0,0,0,0
-        hash = {i:0 for i in range(26)}
-        n = len(s)
-        while r < n:
-            hash[ord(s[r]) - ord("A")] +=1
-            maxf = max(maxf, hash[ord(s[r])- ord('A')])
+""" Longest repeating character replacement"""
+from collections import defaultdict
+# s = "ABAB"
+s = "AABABBA"
+k = 1
 
-            if (r-l+1) - maxf >= k:
-                hash[ord(s[r])-ord('A')] -=1
-                maxf = 0
-                l+=1
+def characterReplacement(s, k):
+    l,r = 0,0
+    n = len(s)
+    maxf, maxcount = 0,0
 
-            if (r-l+1) - maxf <= k:
-                maxlen = max(maxlen, r-l+1)
+    hash = defaultdict(int)
+    while r < n:
+        hash[s[r]]+=1
+        
+        maxf = max(maxf,hash[s[r]])
 
-            r+=1
-        return maxlen
+        if (r-l+1)-maxf > k:
+            hash[s[l]]-=1
+            maxf=0
+            l+=1
+
+        if (r-l+1) - maxf <= k:
+            maxcount = max(maxcount, r-l+1)
+
+        
+        r+=1
+    
+    return maxcount
+
+output = characterReplacement(s, k)
+print(output)
+    # print(hash)
