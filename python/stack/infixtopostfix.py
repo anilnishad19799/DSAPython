@@ -1,114 +1,57 @@
-""" Here Stack Implementation"""
-class DynamicArrayStack:
-    def __init__(self, capacity=1):
-        self.capacity = capacity
-        self.A = [None] * capacity
-        self.top = -1
+def infix_to_postfix(expression):
+    precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+    output = []
+    stack = []
     
+    for char in expression:
+        if char.isalnum():  # Operand
+            output.append(char)
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop()  # Discard the '('
+        else:  # Operator
+            while stack and precedence.get(stack[-1], 0) >= precedence.get(char, 0):
+                output.append(stack.pop())
+            stack.append(char)
+    
+    while stack:
+        output.append(stack.pop())
+    
+    return ''.join(output)
 
-    def resize(self):
-        self.capacity = self.capacity * 2
-        newArray = [None] * self.capacity
-        for i in range(self.top):
-            newArray[i] = self.A[i]
-        self.A = newArray
-
-    def push(self, data):
-        self.data = data
-        if self.capacity == self.top+1:
-            print("Trying to resize ")
-            self.resize()
-
-        self.top = self.top + 1
-        self.A[self.top] = data
-
-    def pop(self):
-        if self.top == -1:
-            print("Stack Underflow")
-
-        if self.top < self.capacity // 2:
-            self.capacity = self.capacity // 2
-            newArray = [None] * self.capacity
-
-            for i in range(self.top):
-                newArray[i] = self.A[i]
-
-            self.A = newArray
-
-        print("deleted element are ", self.A[self.top])
-
-        self.top = self.top - 1
-
-        return self.A[self.top+1]
-
-    def peep(self):
-        if self.top == -1:
-            print("stack underflow")
-
-        for i in range(self.top+1):
-            print(self.A[i])
-
-    def gettop(self):
-        print("top called", self.top)
-        return self.A[self.top]
-
-stack = DynamicArrayStack()
-
-""" Making fucntion for converting infix to postfix expression"""
-
-def infixToPostfixConversion(expression):
-    postfixexroession = []
-    precedenceoperator = {"^":5, "*":4, "/":4, "+":3, "-":3, "(":2}
-    mapping = {")":"("}
-    character = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    number = "0123456789"
+# Test the function
+infix_expression = "a+b*c-(d/e+f)*g"
+postfix_expression = infix_to_postfix(infix_expression)
+print("Infix Expression:", infix_expression)
+print("Postfix Expression:", postfix_expression)
 
 
-    print("*"*100)
-    print(stack.gettop())
-    print("$"*100)
-    for express in expression:
-        print(express)
-        if express in character or express in number:
-            postfixexroession.append(express)
-        elif express == "(":
-            stack.push(express)
-        elif express == ")":
-            popelement = stack.pop()
-            # print("popel;ement", popelement)
-            while mapping[express]!=popelement:
-                postfixexroession.append(popelement)
-                popelement = stack.pop()
 
-        # else:
-        #     popelement = stack.top()
-        #     while precedenceoperator[express] <= precedenceoperator[popelement]:
-        #     # while precedenceoperator[express] <= stack[-1]:
-        #         postfixexroession.append(stack.pop())
-        #         popelement = stack.top()
-        #     # postfixexroession.append(popelement)
-        #     stack.push(express)
+postfixoutput = []
+stack = []
+precedenceoperator = {"-":1, "+":1, "*":2, "/":2, "^":3}
+expression = "a+b*c-(d/e+f)*g"
+for char in expression:
+    if char.isalnum():
+        postfixoutput.append(char)
+    elif char is "(":
+        stack.append(char)
+    elif char is ")":
+        while stack and stack[-1]!="(":
+            postfixoutput.append(stack.pop())
 
-            if not stack.gettop():
-                stack.push(express)
-            else:
-                while precedenceoperator[express] <= precedenceoperator[stack.gettop()] and stack.gettop():
+        stack.pop()
+    else:
+        while precedenceoperator[char] < precedenceoperator[stack[-1]]:
+            postfixoutput.append(stack.pop())
 
-                    popelement = stack.pop()
-                    postfixexroession.append(popelement)
-                
-                stack.push(express)
+        stack.append(char)
+    
+    while stack:
+        postfixoutput.append(stack.pop())
 
-    while stack.gettop():
-        postfixexroession.append(stack.pop())        
-
-    return postfixexroession
-
-
-# expression = "A*B+(C/D)-E*F+G^H"
-expression = "A+B-C"
-
-output = infixToPostfixConversion(expression)
-print(output)
-
+print(postfixoutput)
 
