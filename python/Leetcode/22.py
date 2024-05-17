@@ -35,3 +35,4 @@ for p in permutations_list:
         
 print(finalstack)"""
 
+
