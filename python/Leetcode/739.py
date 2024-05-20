@@ -26,3 +26,17 @@
 # out = s.dailyTemperatures(temperatures)
 # print(out)
 
+
+# temperatures = [89,62,70,58,47,47,46,76,100,70]
+temperatures = [73,74,75,71,69,72,76,73]
+stack = []
+output = [0] * len(temperatures)
+
+for i, t in enumerate(temperatures):
+    while stack and stack[-1][0] < t:
+        stackt, stackindex = stack.pop()
+        output[stackindex] = i - stackindex
+    
+    stack.append([t,i])
+
+print(output)
