@@ -37,7 +37,7 @@ class Solution:
 
             if totalhours <= h:
                 r = mid - 1
-                mink = mid;
+                mink = mid
             else:
                 l = mid+1
 
