@@ -18,6 +18,7 @@ class Solution:
                 low = mid+1
             else:
                 r = mid-1
+                
 
         return -1  
 
