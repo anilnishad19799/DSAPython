@@ -10,7 +10,6 @@ class Solution:
         r = len(nums) - 1
     
         while l < r:
-            print(l,r)
             mid = (l+r) // 2
 
             if nums[mid] > nums[r]:
@@ -23,10 +22,10 @@ class Solution:
 
 s = Solution()
 
-nums = [1]
-nums = [3,4,5,1,2]
+# nums = [1]
+# nums = [3,4,5,1,2]
 # nums = [4,5,6,7,0,1,2]
-# nums = [11,13,15,17]
+nums = [11,13,15,17]
 # nums = [2,1]
 # nums = [3,1,2]
 # nums = [2,3,1]
