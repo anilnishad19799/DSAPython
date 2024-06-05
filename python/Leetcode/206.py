@@ -1,12 +1,21 @@
+from typing import Optional
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head == None:
-            return []
+            return head
         
-        storelist = []
-        temp = head
-        while temp!=None:
-            storelist.append(temp.val)
-            temp = temp.next
+        prev = None
+        curr = head
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
         
-        return storelist[::-1]
+        return prev
