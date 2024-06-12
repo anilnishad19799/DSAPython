@@ -1,5 +1,6 @@
 """
 # Definition for a Node.
+*************** Not solve now *****************
 """
 class Node:
     def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
@@ -22,7 +23,7 @@ class Solution:
         while temp:
             newNode.next = hash[temp]
             randomvalue = temp.random
-            newNode.random = 
+            newNode.random = temp
 
             newNode = newNode.next
             
