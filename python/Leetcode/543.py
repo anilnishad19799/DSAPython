@@ -11,11 +11,12 @@ class TreeNode:
 class Solution:
 
     def __init__(self):
-        self.diameter = 0
+        diameter = 0
 
         
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         def getheightoftree(node: Optional[TreeNode]) -> int:
+            nonlocal diameter
             if not node:
                 return 0
             
@@ -24,11 +25,12 @@ class Solution:
             rheight = getheightoftree(node.right)
             
             # Update the diameter if the path through the current node is longer
-            self.diameter = max(self.diameter, lheight + rheight)
+            diameter = max(diameter, lheight + rheight)
             
             # Return the height of the tree rooted at the current node
             return max(lheight, rheight) + 1
         
         # Call the helper function to initiate the recursive traversal
+        diameter = 0
         getheightoftree(root)
-        return self.diameter
+        return diameter
