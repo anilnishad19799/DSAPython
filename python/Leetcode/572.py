@@ -10,24 +10,22 @@ class TreeNode:
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         
-        if root is None and subRoot is None:
-            return True
+        if subRoot is None:
+            return 1
+        if root is None:
+            return 0
         
-        if root is None and subRoot is not None:
-            return False
+        if self.isSametree(root, subRoot):
+            return 1
         
-        if root is not None and subRoot is None:
-            return False
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
-        def isSametree(mainroot, subroot):
-            if mainroot is None and subRoot is None:
-                return True
-            if mainroot is not None and subroot is None:
-                return False
-            if mainroot.val != subroot.val:
-                return False
-            
-            isSametree(mainroot.left, subroot.left)
-            isSametree(mainroot.right, subroot.right)
+    def isSametree(self, mainroot, subroot):
+        if mainroot is None and subroot is None:
+            return 1
+        if mainroot is None or subroot is None:
+            return 0
+        if mainroot.val != subroot.val:
+            return 0
         
-        return isSametree(root, subRoot)
+        return self.isSametree(mainroot.left, subroot.left) or self.isSametree(mainroot.right, subroot.right)
