@@ -2,7 +2,7 @@
     we use synchronized lock so that one thread can enter at one time
     
     Issue in this
-    so many request come in this it will pass only one thread at a time which make it slow
+    so many request come in this it will pass only one thread at a time which make it slow of locking and unlocking
 """
 
 import threading
