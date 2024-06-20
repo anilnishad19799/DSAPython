@@ -1,6 +1,10 @@
 """ Lazy Initialization overcome eager initialization issue 
     Issue in eager initialization is that whether you call class fucntion or not its object will created
     in Lazy initialization if class calls then it created object
+
+    Diadvantage of Lazy 
+    if two thread come at same time two object will be created at same time
+
 """
 
 class DBConnection:
