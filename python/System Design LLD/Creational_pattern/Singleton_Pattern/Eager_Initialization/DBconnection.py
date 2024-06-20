@@ -1,3 +1,5 @@
+"""Whetther you call class 100 times it will only generate one object and return same object again and again"""
+
 class DBConnection:
     _instance = None
 
