@@ -14,15 +14,11 @@ class PriorityQueue:
                 self.swap(i)
             i = i//2
 
-
     def insert(self, data):
         self.size = self.size+1
         self.heaplist.append(data)
         self.insertHeapify(self.size)
         print(self.heaplist)
-
-
-
     
     def maximumValueindex(self, i):
         if i*2 > self.size:
@@ -32,7 +28,6 @@ class PriorityQueue:
                 return 2*i
             else:
                 return (2*i) + 1    
-
 
     def deleteHeapify(self, i):
         while i*2 < self.size:
