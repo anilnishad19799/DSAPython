@@ -7,16 +7,17 @@ class KthLargest:
         self.nums = sorted(nums, reverse=True)
         
     def add(self, val: int) -> int:
-        self.nums.append(val)
-
         # descendsort = sorted(self.nums, reverse=True)
         # print(descendsort)
-        for index, allval in enumerate(self.nums):
-            if allval >= val:
+        index = 0
+        for allval in self.nums:
+            if val >=allval:
                 self.nums.insert(index, val)
-            
+                break
+            index+=1
+
         descendsort = self.nums[self.k-1]
-        return descendsort[self.k-1]
+        return descendsort
 
 
 k = 3
