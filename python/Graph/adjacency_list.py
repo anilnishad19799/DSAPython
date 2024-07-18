@@ -18,8 +18,8 @@ class Vertex:
     def get_Vertex_ID(self):
         return self.id
     
-    def getWeight(self, nieghbour):
-        return self.adjacent[nieghbour]
+    def getWeight(self, neighbour):
+        return self.adjacent[neighbour]
 
 
 class Graph:
