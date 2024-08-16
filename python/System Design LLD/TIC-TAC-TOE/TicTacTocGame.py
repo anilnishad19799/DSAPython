@@ -3,6 +3,9 @@ from Model.Board import Board
 from Model.PieceType import PieceType
 from collections import deque
 from typing import Deque
+# Creating 2 Players
+from Model.PlayingPieceX import PlayingPieceX
+from Model.PlayingPieceO import PlayingPieceO
 
 class TicTacToeGame:
     def __init__(self):
@@ -10,10 +13,7 @@ class TicTacToeGame:
         self.game_board: Board = None
 
     def initialize_game(self):
-        # Creating 2 Players
-        from Model.PlayingPieceX import PlayingPieceX
-        from Model.PlayingPieceO import PlayingPieceO
-
+        
         cross_piece = PlayingPieceX()
         player1 = Player("Player1", cross_piece)
 
